@@ -1,7 +1,7 @@
 import L from "leaflet";
 import { useEffect, useRef } from "react";
 
-export default function Map() {
+export default function LeafletMap() {
   const mapRef = useRef(null);
 
   const defaultCoordinates = [-37.810272, 144.962646]; // Melbourne CBD coordinates

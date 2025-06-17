@@ -1,6 +1,6 @@
 import SearchBar from "./components/Search/SearchBar";
 import "./App.css";
-import Map from "./components/Map/LeafletMap";
+import LeafletMap from "./components/Map/LeafletMap";
 
 function App() {
   return (
@@ -14,7 +14,7 @@ function App() {
       </div>
 
       <div className="right-container">
-        <Map />
+        <LeafletMap />
       </div>
     </>
   );
