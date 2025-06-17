@@ -2,5 +2,7 @@
     "wikidata",
     "wikipedia",
     "brand:wikidata",
-    "brand:wikipedia"
+    "brand:wikipedia",
+    "layer",
+    "building"
 ]
