@@ -3,6 +3,7 @@ import TextField from "@mui/material/TextField";
 import "./SearchBar.css";
 import { useState } from "react";
 import { search } from "../../utils/fetcher";
+import useDebounce from "../../utils/debouncer";
 
 export default function SearchBar({ location, onSelect }) {
   const [open, setOpen] = useState(false);
@@ -41,6 +42,8 @@ export default function SearchBar({ location, onSelect }) {
     }
   };
 
+  const debounceCall = useDebounce(getLocations, 500);
+
   // Each key stroke fetches the API for autocomplete
   // TO-DO: debounce function to reduce API calls
   const handleInputChange = (event, value) => {
@@ -56,7 +59,7 @@ export default function SearchBar({ location, onSelect }) {
     }
 
     setLoading(true);
-    getLocations(query);
+    debounceCall(query);
   };
 
   const handleChange = (event, value) => {
