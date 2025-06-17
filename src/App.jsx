@@ -6,8 +6,10 @@ function App() {
   return (
     <>
       <div className="left-container">
-        <h1>OZlify</h1>
-        <p>Find your favorite Aussie locations here! </p>
+        <div className="header">
+          <h1>OZlify</h1>
+          <p>Find your favorite Aussie locations here! </p>
+        </div>
         <SearchBar />
       </div>
 

@@ -1,5 +1,6 @@
 import Autocomplete from "@mui/material/Autocomplete";
 import TextField from "@mui/material/TextField";
+import "./SearchBar.css";
 
 export default function SearchBar() {
   // TO-DO: Replace with actual data from locations API
@@ -7,6 +8,7 @@ export default function SearchBar() {
 
   return (
     <Autocomplete
+      className="search-bar"
       options={options}
       renderInput={(params) => (
         <TextField
