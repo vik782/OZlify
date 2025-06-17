@@ -5,10 +5,15 @@ import Map from "./components/Map/LeafletMap";
 function App() {
   return (
     <>
-      <h1>OZlify</h1>
-      <p>Find your favorite Aussie locations here! </p>
-      <SearchBar />
-      <Map />
+      <div className="left-container">
+        <h1>OZlify</h1>
+        <p>Find your favorite Aussie locations here! </p>
+        <SearchBar />
+      </div>
+
+      <div className="right-container">
+        <Map />
+      </div>
     </>
   );
 }
