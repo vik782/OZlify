@@ -4,6 +4,8 @@
 
 .location-info-content {
   padding: 40px !important;
+  max-height: 60vh;
+  overflow-y: auto;
 }
 
 .location-info-title {

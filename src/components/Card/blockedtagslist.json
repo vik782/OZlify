@@ -1,8 +1,9 @@
 [
     "wikidata",
     "wikipedia",
+    "wikimedia_commons",
     "brand:wikidata",
     "brand:wikipedia",
-    "layer",
-    "building"
+    "network:wikidata",
+    "layer"
 ]
