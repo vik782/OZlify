@@ -111,8 +111,8 @@ export default function SearchBar({ setLocation }) {
       renderInput={(params) => (
         <TextField
           {...params}
-          label="Search"
-          placeholder="Find a location in Australia"
+          label="Search Location"
+          placeholder="Try type in a Name, Address, or Landmark"
         />
       )}
     />
