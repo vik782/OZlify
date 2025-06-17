@@ -1,6 +1,7 @@
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import Typography from "@mui/material/Typography";
+import formatLabel from "../../utils/labelFormatter";
 import "./LocationInfoCard.css";
 
 export default function LocationInfo({ location }) {
@@ -16,7 +17,7 @@ export default function LocationInfo({ location }) {
         {info &&
           Object.entries(info).map(([key, value]) => (
             <div className="location-info-row" key={key}>
-              <span className="location-info-key">{key}:</span>
+              <span className="location-info-key">{formatLabel(key)}:</span>
               <span className="location-info-value">{value}</span>
             </div>
           ))}
