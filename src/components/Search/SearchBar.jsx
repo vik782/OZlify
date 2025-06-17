@@ -5,10 +5,11 @@ import { useState } from "react";
 import { search } from "../../utils/fetcher";
 import useDebounce from "../../utils/debouncer";
 
-export default function SearchBar({ location, onSelect }) {
+export default function SearchBar({ setLocation }) {
   const [open, setOpen] = useState(false);
   const [loading, setLoading] = useState(false);
 
+  const [value, setValue] = useState(null);
   const [query, setQuery] = useState("");
   const [options, setOptions] = useState([]);
 
@@ -18,7 +19,7 @@ export default function SearchBar({ location, onSelect }) {
       return;
     }
     try {
-      // endpoint and params being used: https://nominatim.org/release-docs/latest/api/Search/
+      // Search endpoint and params being used from: https://nominatim.org/release-docs/latest/api/Search/
       const data = await search("/search", {
         q: query,
         format: "json",
@@ -28,16 +29,22 @@ export default function SearchBar({ location, onSelect }) {
       });
 
       if (data.length > 0) {
-        data.map((location) => ({
+        const mapped = data.map((location) => ({
+          name: location.name,
+          display_name: location.display_name,
+          lat: location.lat,
+          lon: location.lon,
           // extratags and address params may not be present in all locations, defaulting to empty objects
           info: location.extratags ?? {},
           address: location.address ?? {},
         }));
-        setOptions(data);
+        setOptions(mapped);
+      } else {
+        // Inserts as a dropdown option when no locations are found
+        setOptions([{ display_name: "No location found", disabled: true }]);
       }
-
-      console.log("Mapped data: ", data);
     } catch (error) {
+      setOptions([{ display_name: "No location found", disabled: true }]);
       throw new Error("Failed in fetching locations: " + error.message);
     }
   };
@@ -45,10 +52,15 @@ export default function SearchBar({ location, onSelect }) {
   const debounceCall = useDebounce(getLocations, 500);
 
   // Each key stroke fetches the API for autocomplete
-  // TO-DO: debounce function to reduce API calls
-  const handleInputChange = (event, value) => {
+  const handleInputChange = (event, value, reason) => {
     console.log("Query changed: ", value);
     setQuery(value);
+
+    if (reason !== "input") {
+      // Prevents API call when query is unchanged, but user selects an option
+      setLoading(false);
+      return;
+    }
 
     if (!value) {
       // Empty query, reset options and close dropdown
@@ -58,14 +70,17 @@ export default function SearchBar({ location, onSelect }) {
       return;
     }
 
+    // New query, reset options then attempt to fetch new locations
+    setOptions([]);
     setLoading(true);
-    debounceCall(query);
+    debounceCall(value);
   };
 
   const handleChange = (event, value) => {
-    // Deleting query from input is also a change, hence prevent empty selection
-    if (value) {
-      onSelect(value);
+    setValue(value);
+    if (value && !value.disabled) {
+      // New location selected, updates map accordingly
+      setLocation(value);
     }
   };
 
@@ -82,10 +97,13 @@ export default function SearchBar({ location, onSelect }) {
       className="search-bar"
       loading={loading}
       open={open}
+      value={value}
+      popupIcon={null}
       options={options}
-      value={location}
+      filterOptions={(option) => option}
+      isOptionEqualToValue={(option, value) => option.name === value.name}
       getOptionLabel={(option) => option.display_name}
-      noOptionsText={"No locations found"}
+      getOptionDisabled={(option) => !!option.disabled}
       onOpen={handleOpen}
       onClose={handleClose}
       onInputChange={handleInputChange}

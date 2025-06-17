@@ -1,7 +1,7 @@
-import SearchBar from "./components/Search/SearchBar";
 import { useState } from "react";
-import "./App.css";
+import SearchBar from "./components/Search/SearchBar";
 import LeafletMap from "./components/Map/LeafletMap";
+import "./App.css";
 
 function App() {
   const [location, setLocation] = useState(null);
@@ -13,11 +13,11 @@ function App() {
           <h1>OZlify</h1>
           <p>Find your favorite Aussie locations here! </p>
         </div>
-        <SearchBar location={location} onSelect={setLocation} />
+        <SearchBar setLocation={setLocation} />
       </div>
 
       <div className="right-container">
-        <LeafletMap />
+        <LeafletMap location={location} />
       </div>
     </>
   );
