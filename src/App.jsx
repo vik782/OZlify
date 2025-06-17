@@ -1,6 +1,7 @@
 import { useState } from "react";
 import SearchBar from "./components/Search/SearchBar";
 import LeafletMap from "./components/Map/LeafletMap";
+import LocationInfoCard from "./components/Card/LocationInfoCard";
 import "./App.css";
 
 function App() {
@@ -14,6 +15,7 @@ function App() {
           <p>Find your favorite Aussie locations here! </p>
         </div>
         <SearchBar setLocation={setLocation} />
+        <LocationInfoCard location={location} />
       </div>
 
       <div className="right-container">

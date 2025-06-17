@@ -20,7 +20,7 @@ export default function LeafletMap({ location }) {
           '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
       }).addTo(mapRef.current);
     }
-  }, []);
+  });
 
   useEffect(() => {
     if (!location) return;
