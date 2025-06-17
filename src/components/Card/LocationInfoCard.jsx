@@ -6,24 +6,19 @@ import "./LocationInfoCard.css";
 export default function LocationInfo({ location }) {
   if (!location) return null;
 
-  const { name, info, address } = location;
+  const { name, info } = location;
   return (
     <Card className="location-info-card">
-      <CardContent>
-        <Typography gutterBottom>{name}</Typography>
-
+      <CardContent className="location-info-content">
+        <Typography className="location-info-title" gutterBottom>
+          {name}
+        </Typography>
         {info &&
           Object.entries(info).map(([key, value]) => (
-            <Typography key={key}>
-              {key}: {value}
-            </Typography>
-          ))}
-
-        {address &&
-          Object.entries(address).map(([key, value]) => (
-            <Typography key={key}>
-              {key}: {value}
-            </Typography>
+            <div className="location-info-row" key={key}>
+              <span className="location-info-key">{key}:</span>
+              <span className="location-info-value">{value}</span>
+            </div>
           ))}
       </CardContent>
     </Card>
