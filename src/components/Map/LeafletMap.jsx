@@ -34,9 +34,12 @@ export default function LeafletMap({ location }) {
 
     // Places marker of the selected location on map
     markerRef.current = L.marker(latLon).addTo(mapRef.current);
+    console.log(location);
+
+    const label = location.name?.trim() ? location.name : location.display_name;
 
     // Displays popup of location's name
-    markerRef.current.bindPopup(`<b>${location.name}</b>`).openPopup();
+    markerRef.current.bindPopup(`<b>${label}</b>`).openPopup();
 
     mapRef.current.panTo(latLon); // Slowly pans to new marker
     mapRef.current.setView(latLon, 18); // Centers and zoomed into new marker
