@@ -15,31 +15,39 @@ export default function LocationInfo({ location }) {
         <Typography className="location-info-title" gutterBottom>
           {name}
         </Typography>
-        {display_name && (
-          <div className="location-info-row" key="display_name">
-            <span className="location-info-key">
-              {formatLabel("display_name")}:
-            </span>
-            <span className="location-info-value">{display_name}</span>
-          </div>
-        )}
-        {info &&
-          Object.entries(info)
-            .filter(([key]) => !blockedtagslist.includes(key))
-            .map(([key, value]) => (
-              <div className="location-info-row" key={key}>
-                <span className="location-info-key">{formatLabel(key)}:</span>
-                <span className="location-info-value">
-                  {key === "website" ? (
-                    <a href={value} target="_blank">
-                      {value}
-                    </a>
-                  ) : (
-                    value
-                  )}
-                </span>
-              </div>
-            ))}
+        <table className="location-info-table">
+          <tbody>
+            {display_name && (
+              <tr key="display_name">
+                <td className="location-info-key-td">
+                  {formatLabel("display_name")}
+                </td>
+                <td className="location-info-value-td">{display_name}</td>
+              </tr>
+            )}
+            {info &&
+              Object.entries(info)
+                .filter(([key]) => !blockedtagslist.includes(key))
+                .map(([key, value]) => (
+                  <tr key={key}>
+                    <td className="location-info-key-td">{formatLabel(key)}</td>
+                    <td className="location-info-value-td">
+                      {key === "website" ? (
+                        <a
+                          href={value}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
+                          {value}
+                        </a>
+                      ) : (
+                        value
+                      )}
+                    </td>
+                  </tr>
+                ))}
+          </tbody>
+        </table>
       </CardContent>
     </Card>
   );

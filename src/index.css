@@ -56,7 +56,7 @@ button:focus-visible {
 
 #map {
   height: 100vh;
-  width: 1000px;
+  width: 1200px;
 }
 
 @media (prefers-color-scheme: light) {

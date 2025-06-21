@@ -10,27 +10,30 @@
 
 .location-info-title {
   text-align: center;
+  padding-bottom: 2rem;
   font-size: 28px !important;
-  font-weight: bold !important;
-  padding-bottom: 20px !important;
+  margin-bottom: 0 !important;
 }
 
-.location-info-row {
-  display: grid;
-  grid-template-columns: 10rem 1fr;
-  gap: 2rem;
-  margin-bottom: 1.5rem;
-  border-bottom: 1px solid rgb(180, 180, 180);
+.location-info-table {
+  width: 100%;
+  border-collapse: collapse;
 }
 
-.location-info-key {
-  display: flex;
-  align-items: flex-end;
+.location-info-key-td {
+  background: #1976d2;
+  color: #fff;
+  text-align: center;
   font-weight: bold;
+  width: 180px;
+  padding: 1rem 1.5rem;
+  border-bottom: 1px solid #e0e0e0;
 }
 
-.location-info-key,
-.location-info-value {
-  font-size: 18x !important;
-  text-align: left;
+.location-info-value-td {
+  background: rgb(233, 233, 233);
+  vertical-align: middle;
+  padding: 0.9rem 1.5rem;
+  border-bottom: 1px solid #e0e0e0;
+  max-width: 600px;
 }
