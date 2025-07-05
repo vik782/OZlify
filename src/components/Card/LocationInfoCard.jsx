@@ -3,7 +3,7 @@ import CardContent from "@mui/material/CardContent";
 import Typography from "@mui/material/Typography";
 import formatLabel from "../../utils/labelFormatter";
 import "./LocationInfoCard.css";
-import blockedtagslist from "./BlockedTagsList.json";
+import blockedtagslist from "./BlockedTags.json";
 
 export default function LocationInfo({ location }) {
   if (!location) return null;
