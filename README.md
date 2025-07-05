@@ -1,7 +1,9 @@
 # OZlify
+<img width="1777" alt="Screenshot 2025-07-06 at 12 37 49 am" src="https://github.com/user-attachments/assets/f83cc8c7-b08b-4040-a129-0a943f1d434a" />
+
 Your personal locator for locations in Aussie.
 
-OZlify is a simple GIS visualiser web-app that let users enter a place, address, or landmark, and shows the user where it is on the map. Ozylife also shows any useful information about that place. For instance, if a user searches "Melbourne TownHall", it might show them the link to its website, and the date in which it was built in. 
+OZlify is a simple GIS visualiser web-app that let users enter a place, address, or landmark, and shows the user where it is on the map. Ozylify also shows any useful information about that place. For instance, if a user searches "Melbourne Town Hall", it might show them the link to its website, and the date in which it was built in. 
 
 You can checkout OZlify online at https://ozlify.vercel.app
 
